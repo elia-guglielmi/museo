@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>collezione</title>
+	<link th:href="@{/css/collezione.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<div id="hormenu">
+		<!-- div che contiene il menu -->
+		<ul>
+			<!-- lista principale: definisce il menu nella sua interezza -->
+			<li>
+				<a href="#">Menu 1</a> <!-- primo list-item, prima voce del menu -->
+				<ul>
+					<!-- Lista annidata: voci del sotto-menu -->
+					<li><a href="/">home</a></li>
+					<li><a href="/admin">Menu admin</a></li>
+
+				</ul> <!-- Fine del sotto-menu -->
+			</li> <!-- Chiudo il list-item -->
+			<!--qui altri list-item -->
+	</div>
+	<nav th:replace="fragments/base.html :: inizio">
+	</nav>
+	<header>
+		<h1>
+			<em th:text="|${collezione.name}|">Nome Collezione</em>
+		</h1>
+	</header>
+	<section id="opere">
+		<!-- elenco opere -->
+		<em>Opere</em>
+		<div id="flex-container">
+			<div class="col">
+				<ul>
+					<li th:each="opera:${collezione.opere}">Titolo:
+						<a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" th:text="|${opera.title}|">
+							titolo</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col">
+				<ul>
+					<li th:each="opera:${collezione.opere}">Autore:
+						<a href="opera.html" th:href="@{'/artista' + '/' + ${opera.artista.id}}"
+							th:text="|${opera.artista.firstname} ${opera.artista.lastname}|"> nome cognome</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="curatore">
+			<em>Curatore:</em>
+			<span th:text="|${collezione.curatore.firstname} ${collezione.curatore.lastname}|">Nome Cognome</span>
+		</div>
+	</section>
+		<footer th:replace="fragments/base.html ::  fondo(home='/')">
+	</footer>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>opera</title>
+<link th:href="@{/css/opera.css}" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <body>
+    <div id="hormenu"><!-- div che contiene il menu -->
+<ul> <!-- lista principale: definisce il menu nella sua interezza -->
+<li>
+<a href="#">Menu 1</a> <!-- primo list-item, prima voce del menu -->
+<ul> <!-- Lista annidata: voci del sotto-menu -->
+<li><a href="#immagine">Immagine</a></li>
+<li><a href="#descrizione">Descrizione</a></li>
+<li><a href="/">Home</a></li>
+
+</ul> <!-- Fine del sotto-menu -->
+</li> <!-- Chiudo il list-item -->
+<!--qui altri list-item -->
+</div>
+		<nav th:replace="fragments/base.html :: inizio">
+		</nav>
+		<header id="titolo">
+        <em th:text="|${opera.title}|">Titolo</em>
+      </header>
+    <section id="immagine">
+        <img  th:src="@{'/images/'+*{opera.picture}}"/>
+      <div>Autore:
+        <a href="#" th:href="@{'/artista' + '/' + ${opera.artista.id}}" 
+        th:text="|${opera.artista.firstname} ${opera.artista.lastname}|">
+          nome cognome
+        </a>
+      </div>
+    </section>
+      <section id="descrizione">
+        <em>Descrizione</em>
+        <p th:text="|${opera.description}|">descrizione</p>
+        </ul>
+      </section>
+     	<footer th:replace="fragments/base.html ::  fondo(home='/')">
+	</footer>
+</body>
+</html>

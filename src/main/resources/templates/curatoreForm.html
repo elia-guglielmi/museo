@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>CuratoreForm</title>
+	<link th:href="@{/css/admin-menu.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<div id="hormenu">
+		<!-- div che contiene il menu -->
+		<ul>
+			<!-- lista principale: definisce il menu nella sua interezza -->
+			<li>
+				<a href="#">Menu 1</a> <!-- primo list-item, prima voce del menu -->
+				<ul>
+					<!-- Lista annidata: voci del sotto-menu -->
+					<li><a href="/">home</a></li>
+					<li><a href="/admin">Menu admin</a></li>
+				</ul> <!-- Fine del sotto-menu -->
+			</li> <!-- Chiudo il list-item -->
+			<!--qui altri list-item -->
+	</div>
+		<nav th:replace="fragments/base.html :: inizio">
+		</nav>
+	<header th:replace="fragments/base.html :: intestazione(nome='Aggiungi Curatore')">
+	</header>
+	<section>
+		<em>dati curatore</em>
+		<form th:action="@{/admin/curatore}" method="POST" th:object="${curatore}">
+			<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>		
+		<div>
+			<div>
+				<span>Nome:</span>
+				<span><input type="text" th:field="*{firstname}" /></span>
+				<span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></span>
+			</div>		
+			<div>
+				<span>Cognome:</span>
+				<span><input type="text" th:field="*{lastname}" /></span>
+				<span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span>
+			</div>
+			<div>
+				<span>Email:</span>
+				<span><input type="text" th:field="*{email}" /></span>
+				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+			</div>
+			<div>
+				<span>Telefono:</span>
+				<span><input type="number" th:field="*{phonenumber}" /></span>
+			</div>
+			<div>
+				<span>Luogo di nascita:</span>
+				<span><input type="text" th:field="*{birthplace}" /></span>
+				<span th:if="${#fields.hasErrors('birthplace')}" th:errors="*{birthplace}"></span>
+			</div>
+			<div>
+				<span>Data di nascita:</span>
+				<span><input type="date" th:field="*{dateofbirth}" /></span>
+				<span th:if="${#fields.hasErrors('dateofbirth')}" th:errors="*{dateofbirth}"></span>
+			</div>
+			<div>
+				<span><button type="submit">Invio</button></span>
+			</div>
+		</div>
+		</form>
+	</section>
+	<footer th:replace="fragments/base.html ::  fondo(home='/')">
+	</footer>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head xmlns:th="http://www.thymeleaf.org">
+	<meta charset="utf-8">
+	<title>artista</title>
+	<link th:href="@{/css/artista.css}" rel="stylesheet" />
+</head>
+
+<body>
+
+	<body>
+		<div id="hormenu">
+			<!-- div che contiene il menu -->
+			<ul>
+				<!-- lista principale: definisce il menu nella sua interezza -->
+				<li>
+					<a href="#">Menu 1</a> <!-- primo list-item, prima voce del menu -->
+					<ul>
+						<!-- Lista annidata: voci del sotto-menu -->
+						<li><a href="#biografia">Biografia</a></li>
+						<li><a href="#dati-anagrafici">Dati anagrafici</a></li>
+						<li><a href="#opere">Opere</a></li>
+						<li><a href="/">Home</a></li>
+
+					</ul> <!-- Fine del sotto-menu -->
+				</li> <!-- Chiudo il list-item -->
+				<!--qui altri list-item -->
+		</div>
+		<nav th:replace="fragments/base.html :: inizio">
+		</nav>
+		<div id="titolo">
+			<em th:text="|${artista.firstname} ${artista.lastname}|">Nome cognome</em>
+		</div>
+		<section id="biografia">
+			<em>Biografia</em>
+			<p align="justify" th:text="|${artista.biography}|">
+			biografia
+				<img src="#" align="right">
+			</p>
+		</section>
+		<section id="dati-anagrafici" >
+			<em>Dati Anagrafici</em>
+			<ul>
+				<li>Nome: <span th:text="|${artista.firstname}|"></span> </li>
+				<li>Cognome: <span th:text="|${artista.lastname}|"></span></li>
+				<li>Data di nascita: <span th:text="|${artista.dateofbirth}|"></span></li>
+				<li>Data di morte: <span th:text="|${artista.dateofdeath}|"></span></li>
+				<li>Nazionalità: <span th:text="|${artista.nationality}|"></span></li>
+				<li>Luogo di nascita: <span th:text="|${artista.birthplace}|"></span></li>
+				<li>Luogo di morte: <span th:text="|${artista.placeofdeath}|"></span></li>
+			</ul>
+		</section>
+		<section id="opere">
+			<em>Opere</em>
+			<ul align="justify">
+				<li th:each="opera:${artista.opere}">Titolo:
+					<a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" 
+					 th:text="|${opera.title}|"> titolo</a>
+					<img src="#" align="right">
+				</li>
+			</ul>
+		</section>
+			<footer th:replace="fragments/base.html ::  fondo(home='/')">
+	</footer>
+	</body>
+</html>

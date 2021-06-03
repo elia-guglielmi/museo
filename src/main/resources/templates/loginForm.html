@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>Login</title>
+	<link th:href="@{/css/loginForm.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<div id="hormenu">
+		<!-- div che contiene il menu -->
+		<ul>
+			<!-- lista principale: definisce il menu nella sua interezza -->
+			<li>
+				<a href="#">Menu 1</a> <!-- primo list-item, prima voce del menu -->
+				<ul>
+					<!-- Lista annidata: voci del sotto-menu -->
+					<li><a href="/">home</a></li>
+
+				</ul> <!-- Fine del sotto-menu -->
+			</li> <!-- Chiudo il list-item -->
+			<!--qui altri list-item -->
+	</div>
+		<nav th:replace="fragments/base.html :: inizio">
+		</nav>
+	<header th:replace="fragments/base.html :: intestazione(nome='LogIn')">
+	</header>
+	<section>
+		<em>login</em>
+		<form th:action="@{/login}" method="POST">
+		<div class="dati">
+			<div>
+				<span>Username:</span>
+				<span><input name="username" type="text" required /></span>
+			</div>		
+			<div>
+				<span>Password:</span>
+				<span><input name="password" type="password" required /></span>
+			</div>
+			<div>
+				<span><button type="submit">Login</button></span>
+			</div>
+		</div>
+	</form>
+		<form th:action="@{/register}" method="GET">
+			<div>
+				<button type="submit">Registrati</button>
+			</div>
+		</form>
+	</section>
+		<footer th:replace="fragments/base.html ::  fondo(home='/')">
+	</footer>
+</body>
+
+</html>

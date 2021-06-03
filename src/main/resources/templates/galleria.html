@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>galleria</title>
+<link th:href="@{/css/galleria.css}" rel="stylesheet" />
+</head>
+<body>
+  <body>
+    <div id="hormenu"><!-- div che contiene il menu -->
+<ul> <!-- lista principale: definisce il menu nella sua interezza -->
+<li>
+<a href="#">Menu 1</a> <!-- primo list-item, prima voce del menu -->
+<ul> <!-- Lista annidata: voci del sotto-menu -->
+<li><a href="/">Home</a></li>
+
+</ul> <!-- Fine del sotto-menu -->
+</li> <!-- Chiudo il list-item -->
+<!--qui altri list-item -->
+</div>
+		<nav th:replace="fragments/base.html :: inizio">
+		</nav>
+	<header th:replace="fragments/base.html :: intestazione(nome='Cerca in Galleria')">
+	</header>
+      <section id="opere">
+        <em>Opere</em>
+        <div id="flex-container">
+          <div class="col">
+			<div>
+				<span>Cerca per titolo o autore:</span>
+			</div>		
+          <div>
+				<span>Cerca per anno:</span>
+			</div>
+          </div>
+           <div class="col">  
+           <form th:action="@{/galleria}" method="get">
+             <div>
+				<span ><input type="text" id="search" name="keyword" /></span>
+                 <span><button type="submit">cerca</button></span>
+			</div>	
+           </form>	
+         <form th:action="@{/galleria}" method="get">
+             <div>
+				<span ><input type="number" id="search" name="keynumber" /></span>
+                 <span><button type="submit">cerca</button></span>
+			</div>	
+           </form>	
+             </div>
+		</div>
+        <ul align="justify">
+				<li th:each="opera:${opere}">Titolo:
+					<a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" 
+					 th:text="|${opera.title}|"> titolo</a>
+					<img src="#" align="right">
+				</li>
+			</ul>
+      </section>
+     	<footer th:replace="fragments/base.html ::  fondo(home='/')">
+	</footer>
+</body>
+</html>

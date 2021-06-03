@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <title>collezione</title>
+<link th:href="@{/css/admin-menu.css}" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="hormenu"><!-- div che contiene il menu -->
+<ul> <!-- lista principale: definisce il menu nella sua interezza -->
+<li>
+<a href="#">Menu 1</a> <!-- primo list-item, prima voce del menu -->
+<ul> <!-- Lista annidata: voci del sotto-menu -->
+<li><a href="/">home</a></li>
+
+</ul> <!-- Fine del sotto-menu -->
+</li> <!-- Chiudo il list-item -->
+<!--qui altri list-item -->
+</div>
+		<nav th:replace="fragments/base.html :: inizio">
+		</nav>
+	<header th:replace="fragments/base.html :: intestazione(nome='Menu Amministratore')">
+	</header>
+    <section>
+      <!-- elenco opere --> 
+       <em>Opere</em>
+            <div>
+              <ul>
+                <li th:each="opera:${opere}"> 
+                <form th:action="@{'/admin/rimuoviopera' + '/' + ${opera.id}}" method="GET">
+                <span  th:text="|${opera.title}|">titolo </span>
+                 <button type="submit">rimuovi</button>
+                </form>
+				</li>
+              </ul>
+            </div>
+      <a href="/admin/opera">aggiungi opera</a>
+    </section>  
+      <section>
+      <!-- elenco artisti --> 
+       <em>Artisti</em>
+            <div>
+              <ul>
+               <li th:each="artista:${artisti}"> 
+                <form th:action="@{'/admin/rimuoviartista' + '/' + ${artista.id}}" method="GET">
+                <span  th:text="|${artista.firstname} ${artista.lastname}|">titolo </span>
+                 <button type="submit">rimuovi</button>
+                </form>
+				</li>
+              </ul>
+            </div>
+        <a href="/admin/artista">aggiungi artista</a>
+    </section>  
+      <section>
+      <!-- elenco collezioni --> 
+       <em>Collezioni</em>
+            <div>
+              <ul>
+                <li th:each="collezione:${collezioni}"> 
+                <form th:action="@{'/admin/rimuovicollezione' + '/' + ${collezione.id}}" method="GET">
+                <span  th:text="|${collezione.name}|">titolo </span>
+                 <button type="submit">rimuovi</button>
+                </form>
+				</li>
+              </ul>
+            </div>
+        <a href="/admin/collezione">aggiungi collezione</a>
+    </section> 
+    <section> 
+    <!-- elenco artisti --> 
+       <em>curatori</em>
+            <div>
+              <ul>
+               <li th:each="curatore:${curatori}"> 
+                <form th:action="@{'/admin/rimuovicuratore' + '/' + ${curatore.matricola}}" method="GET">
+                <span  th:text="|${curatore.firstname} ${curatore.lastname}|">titolo </span>
+                 <button type="submit">rimuovi</button>
+                </form>
+				</li>
+              </ul>
+            </div>
+        <a href="/admin/curatore">aggiungi artista</a>
+    </section>  
+    <footer th:replace="fragments/base.html ::  fondo(home='/')">
+	</footer>
+  </body>
+</html>

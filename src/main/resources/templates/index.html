@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>home</title>
+	<link th:href="@{/css/home-museo.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<div id="hormenu">
+		<!-- div che contiene il menu -->
+		<ul>
+			<!-- lista principale: definisce il menu nella sua interezza -->
+			<li>
+				<a href="#">Menu 1</a> <!-- primo list-item, prima voce del menu -->
+				<ul>
+					<!-- Lista annidata: voci del sotto-menu -->
+					<li><a href="login">Accedi</a></li>
+					<li><a href="#autori">Autori</a></li>
+					<li><a href="#collezioni">Collezioni</a></li>
+					<li><a href="galleria">Cerca in galleria</a></li>
+					<li><a href="#informazioni">Informazioni</a></li>
+					<li><a href="#contatti">Contatti</a></li>
+					<li><a href="admin">Menu admin</a></li>
+
+				</ul> <!-- Fine del sotto-menu -->
+			</li> <!-- Chiudo il list-item -->
+			<!--qui altri list-item -->
+	</div>
+		<nav th:replace="fragments/base.html :: inizio">
+		</nav>
+	<header th:replace="fragments/base.html :: intestazione(nome='Museo')">
+	</header>
+	<section id="informazioni">
+		<em>Chi siamo</em>
+		<p allign="justify">
+			<img id="immagine-1" src="#" align="left">
+			descrizione
+		</p>
+	</section>
+	<section id="autori">
+		<!-- elenco autori -->
+		<em>Autori</em>
+		<ul>
+			<li th:each="artista : ${artisti}">
+				<a href="artista.html" th:href="@{'/artista' + '/' + ${artista.id}}"
+					th:text="|${artista.firstname} ${artista.lastname}|">Paolo Rossi</a>
+			</li>
+		</ul>
+	</section>
+	<div>
+		<img id="immagine-2" src="#">
+	</div>
+	<section id="collezioni">
+		<!-- elenco autori -->
+		<em>Collezioni</em>
+		<ul>
+			<li th:each="collezione : ${collezioni}">
+				<a href="collezione.html" th:href="@{'/collezione' + '/' + ${collezione.id}}"
+					th:text="|${collezione.name}|">Paolo Rossi</a>
+			</li>
+		</ul>
+	</section>
+	<footer>
+		<img src="/images/logo_small.png">
+		<!---questo è il logo--->
+		<div>
+			<h1 id="contatti">
+				<em>Contatti</em>
+			</h1>
+			<p>
+				<span>Email: </span>
+			</p>
+			<p>
+				<span>Telefono:</span>
+			</p>
+		</div>
+	</footer>
+	
+</body>
+
+
+</html>

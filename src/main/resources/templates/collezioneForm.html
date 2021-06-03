@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>collezioneForm</title>
+	<link th:href="@{/css/admin-menu.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<div id="hormenu">
+		<!-- div che contiene il menu -->
+		<ul>
+			<!-- lista principale: definisce il menu nella sua interezza -->
+			<li>
+				<a href="#">Menu 1</a> <!-- primo list-item, prima voce del menu -->
+				<ul>
+					<!-- Lista annidata: voci del sotto-menu -->
+					<li><a href="/">home</a></li>
+					<li><a href="/admin">Menu admin</a></li>
+
+				</ul> <!-- Fine del sotto-menu -->
+			</li> <!-- Chiudo il list-item -->
+			<!--qui altri list-item -->
+	</div>
+		<nav th:replace="fragments/base.html :: inizio">
+		</nav>
+	<header th:replace="fragments/base.html :: intestazione(nome='Aggiungi Collezione')">
+	</header>
+	<section>
+		<em>dati collezione</em>
+		<form th:action="@{/admin/collezione}" method="POST" th:object="${collezione}">
+			<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>		
+		<div>
+			<div>
+				<span>Nome:</span>
+				<span><input type="text" th:field="*{name}" /></span>
+				<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+			</div>		
+			<div>
+				<span>Descrizione:</span>
+				<span><input type="text" th:field="*{description}" /></span>
+				<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+			</div>
+			<div>
+				<span>Curatore:</span>
+				<select th:field="*{curatore}">
+    				<option th:each="curatore:${curatori}" th:value="${curatore.matricola}" th:text="|${curatore.firstname} ${curatore.lastname}|">
+   				 	</option>
+				</select>
+				<span th:if="${#fields.hasErrors('curatore')}" th:errors="*{curatore}"></span>
+			</div>
+			<div>
+				<span><button type="submit">Invio</button></span>
+			</div>
+		</div>
+		</form>
+	</section>
+		<footer th:replace="fragments/base.html ::  fondo(home='/')">
+	</footer>
+</body>
+
+</html>
