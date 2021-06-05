@@ -23,9 +23,8 @@
 </div>
 		<nav th:replace="fragments/base.html :: inizio">
 		</nav>
-		<header id="titolo">
-        <em th:text="|${opera.title}|">Titolo</em>
-      </header>
+		<header th:replace="fragments/base.html :: intestazione(nome=|${opera.title}|)">
+	</header>
     <section id="immagine">
         <img  th:src="@{'/images/'+*{opera.picture}}"/>
       <div>Autore:

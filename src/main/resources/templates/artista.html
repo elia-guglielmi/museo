@@ -29,9 +29,8 @@
 		</div>
 		<nav th:replace="fragments/base.html :: inizio">
 		</nav>
-		<div id="titolo">
-			<em th:text="|${artista.firstname} ${artista.lastname}|">Nome cognome</em>
-		</div>
+		<header th:replace="fragments/base.html :: intestazione(nome=|${artista.firstname} ${artista.lastname}|)">
+	</header>
 		<section id="biografia">
 			<em>Biografia</em>
 			<p align="justify" th:text="|${artista.biography}|">
@@ -57,7 +56,7 @@
 				<li th:each="opera:${artista.opere}">Titolo:
 					<a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" 
 					 th:text="|${opera.title}|"> titolo</a>
-					<img src="#" align="right">
+					<img th:src="@{'/images/'+*{opera.picture}}" align="right"/>
 				</li>
 			</ul>
 		</section>
