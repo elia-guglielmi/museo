@@ -13,7 +13,7 @@
 		<ul>
 			<!-- lista principale: definisce il menu nella sua interezza -->
 			<li>
-				<a href="#">Menu 1</a> <!-- primo list-item, prima voce del menu -->
+				<a href="#"><img src="/images/icons8-menu-48.png"/></a> <!-- primo list-item, prima voce del menu -->
 				<ul>
 					<!-- Lista annidata: voci del sotto-menu -->
 					<li><a href="/">home</a></li>
@@ -33,38 +33,40 @@
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>		
 		<div>
-			<div>
-				<span>Nome:</span>
-				<span><input type="text" th:field="*{firstname}" /></span>
-				<span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></span>
-			</div>		
-			<div>
-				<span>Cognome:</span>
-				<span><input type="text" th:field="*{lastname}" /></span>
-				<span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span>
-			</div>
-			<div>
-				<span>Email:</span>
-				<span><input type="text" th:field="*{email}" /></span>
-				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-			</div>
-			<div>
-				<span>Telefono:</span>
-				<span><input type="number" th:field="*{phonenumber}" /></span>
-			</div>
-			<div>
-				<span>Luogo di nascita:</span>
-				<span><input type="text" th:field="*{birthplace}" /></span>
-				<span th:if="${#fields.hasErrors('birthplace')}" th:errors="*{birthplace}"></span>
-			</div>
-			<div>
-				<span>Data di nascita:</span>
-				<span><input type="date" th:field="*{dateofbirth}" /></span>
-				<span th:if="${#fields.hasErrors('dateofbirth')}" th:errors="*{dateofbirth}"></span>
-			</div>
-			<div>
-				<span><button type="submit">Invio</button></span>
-			</div>
+		<table>
+			<tr>
+				<td>Nome:</td>
+				<td><input type="text" th:field="*{firstname}" /></td>
+				<td th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></td>
+			</tr>		
+			<tr>
+				<td>Cognome:</td>
+				<td><input type="text" th:field="*{lastname}" /></td>
+				<td th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" th:field="*{email}" /></td>
+				<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+			</tr>
+			<tr>
+				<td>Telefono:</td>
+				<td><input type="number" th:field="*{phonenumber}" /></td>
+			</tr>
+			<tr>
+				<td>Luogo di nascita:</td>
+				<td><input type="text" th:field="*{birthplace}" /></td>
+				<td th:if="${#fields.hasErrors('birthplace')}" th:errors="*{birthplace}"></td>
+			</tr>
+			<tr>
+				<td>Data di nascita:</td>
+				<td><input type="date" th:field="*{dateofbirth}" /></td>
+				<td th:if="${#fields.hasErrors('dateofbirth')}" th:errors="*{dateofbirth}"></td>
+			</tr>
+			<tr>
+				<td><button type="submit">Invio</button></td>
+			</tr>
+		</table>
 		</div>
 		</form>
 	</section>

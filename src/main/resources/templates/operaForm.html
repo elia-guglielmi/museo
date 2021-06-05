@@ -13,7 +13,7 @@
 		<ul>
 			<!-- lista principale: definisce il menu nella sua interezza -->
 			<li>
-				<a href="#">Menu 1</a> <!-- primo list-item, prima voce del menu -->
+				<a href="#"><img src="/images/icons8-menu-48.png"/></a> <!-- primo list-item, prima voce del menu -->
 				<ul>
 					<!-- Lista annidata: voci del sotto-menu -->
 					<li><a href="/">home</a></li>
@@ -34,42 +34,50 @@
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>		
 		<div>
-			<div>
-				<span>Titolo:</span>
-				<span><input type="text" th:field="*{title}" /></span>
-				<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
-			</div>		
-			<div>
-				<span>Anno:</span>
-				<span><input type="number" th:field="*{year}" /></span>
-				<span th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span>
-			</div>
-			<div>
-				<span>Descrizione:</span>
-				<span><input type="text" th:field="*{description}" /></span>
-				<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
-			</div>
-			<div>
-				<span>Artista:</span>
+		<table>
+			<tr>
+				<td>Titolo:</td>
+				<td><input type="text" th:field="*{title}" /></td>
+				<td th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></td>
+			</tr>		
+			<tr>
+				<td>Anno:</td>
+				<td><input type="number" th:field="*{year}" /></td>
+				<td th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></td>
+			</tr>
+			<tr>
+				<td>Descrizione:</td>
+				<td><input type="text" th:field="*{description}" /></td>
+				<td th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></td>
+			</tr>
+			<tr>
+				<td>Artista:</td>
+				<td>
 				<select th:field="*{artista}">
     				<option th:each="artista:${artisti}" th:value="${artista.id}" th:text="${artista.lastname}">
    				 	</option>
-				</select>			
-			</div>
-			<div>
-				<span>Collezione:</span>
+				</select>	
+				</td>		
+			</tr>
+			<tr>
+				<td>Collezione:</td>
+				<td>
 				<select th:field="*{collezione}">
     				<option th:each="collezione:${collezioni}" th:value="${collezione.id}" th:text="${collezione.name}">
    				 	</option>
 				</select>
-			</div>
-			<div>
+				</td>
+			</tr>
+			<tr>
+			<td>
 			<label>Picture:</label>
-				<span><input type="file" name="file" accept="image/png, image/jpeg" /></span>
-			</div>
-			<div>
-				<span><button type="submit">Invio</button></span>
-			</div>
+			</td>
+				<td><input type="file" name="file" accept="image/png, image/jpeg" /></td>
+			</tr>
+			<tr>
+				<td><button type="submit">Invio</button></td>
+			</tr>
+		</table>
 		</div>
 		</form>
 	</section>

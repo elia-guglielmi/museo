@@ -37,6 +37,11 @@ display: block;
 padding: 5px;
 color: #000;
 text-decoration: none;
+height: 30px;
+}
+div#hormenu img
+{
+height: 100%;
 }
 
 div#hormenu a:hover
@@ -112,26 +117,27 @@ section {
   margin: 10% 15%;
 }
 
-section#informazioni p{
+section p{
   background-color:white;
  
 }
 
-section#autori ul{
+section ul{
   background-color: white;
+  list-style-type: none;
 }
 
-section#autori a{
+section a{
   color: black;
 }
 
-section#autori li{
+section li{
 
   padding-bottom: 10%;
   
 }
 
-section#autori a:hover
+section a:hover
 {
 color: coral;
 text-decoration: none;
@@ -144,23 +150,6 @@ img#immagine-2{
   margin-right:10%;
 }
 
-section#collezioni ul{
-  background-color: white;
-}
-
-section#collezioni a{
-  color: black;
-}
-
-section#collezioni li{
-  padding-bottom: 10%; 
-}
-
-section#collezioni a:hover
-{
-color: coral;
-text-decoration: none;
-}
 
 section#collezioni ul img{
   height:80%;
@@ -169,6 +158,7 @@ section#collezioni ul img{
   top: -50px;
   left:60%;
 }
+
 
 footer {
   background-color: gray;

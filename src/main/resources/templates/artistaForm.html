@@ -13,7 +13,7 @@
 		<ul>
 			<!-- lista principale: definisce il menu nella sua interezza -->
 			<li>
-				<a href="#">Menu 1</a> <!-- primo list-item, prima voce del menu -->
+				<a href="#"><img src="/images/icons8-menu-48.png"/></a> <!-- primo list-item, prima voce del menu -->
 				<ul>
 					<!-- Lista annidata: voci del sotto-menu -->
 					<li><a href="/">home</a></li>
@@ -31,51 +31,53 @@
 		<form th:action="@{/admin/artista}" method="POST" th:object="${artista}">
 			<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-		</div>		
+		</div>	
 		<div>
-			<div>
-				<span>Nome:</span>
-				<span><input type="text" th:field="*{firstname}" /></span>
-				<span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></span>
-			</div>		
-			<div>
-				<span>Cognome:</span>
-				<span><input type="text" th:field="*{lastname}" /></span>
-				<span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span>
-			</div>
-			<div>
-				<span>Biografia:</span>
-				<span><input type="text" th:field="*{biography}" /></span>
-				<span th:if="${#fields.hasErrors('biography')}" th:errors="*{biography}"></span>
-			</div>
-			<div>
-				<span>Nazionalità:</span>
-				<span><input type="text" th:field="*{nationality}" /></span>
-				<span th:if="${#fields.hasErrors('nationality')}" th:errors="*{nationality}"></span>
-			</div>
-			<div>
-				<span>Luogo di nascita:</span>
-				<span><input type="text" th:field="*{birthplace}" /></span>
-				<span th:if="${#fields.hasErrors('birthplace')}" th:errors="*{birthplace}"></span>
-			</div>
-			<div>
-				<span>Data di nascita:</span>
-				<span><input type="date" th:field="*{dateofbirth}" /></span>
-				<span th:if="${#fields.hasErrors('dateofbirth')}" th:errors="*{dateofbirth}"></span>
-			</div>
-			<div>
-				<span>Data di morte:</span>
-				<span><input type="date" th:field="*{dateofdeath}" /></span>
-				<span th:if="${#fields.hasErrors('dateofdeath')}" th:errors="*{dateofdeath}"></span>
-			</div>
-			<div>
-				<span>Luogo di morte:</span>
-				<span><input type="text" th:field="*{placeofdeath}" /></span>
-				<span th:if="${#fields.hasErrors('placeofdeath')}" th:errors="*{placeofdeath}"></span>
-			</div>
-			<div>
-				<span><button type="submit">Invio</button></span>
-			</div>
+		<table>	
+			<tr>
+				<td>Nome:</td>
+				<td><input type="text" th:field="*{firstname}" /></td>
+				<td th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></td>
+			</tr>		
+			<tr>
+				<td>Cognome:</td>
+				<td><input type="text" th:field="*{lastname}" /></td>
+				<td th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></td>
+			</tr>
+			<tr>
+				<td>Biografia:</td>
+				<td><input type="text" th:field="*{biography}" /></td>
+				<td th:if="${#fields.hasErrors('biography')}" th:errors="*{biography}"></td>
+			</tr>
+			<tr>
+				<td>Nazionalità:</td>
+				<td><input type="text" th:field="*{nationality}" /></td>
+				<td th:if="${#fields.hasErrors('nationality')}" th:errors="*{nationality}"></td>
+			</tr>
+			<tr>
+				<td>Luogo di nascita:</td>
+				<td><input type="text" th:field="*{birthplace}" /></td>
+				<td th:if="${#fields.hasErrors('birthplace')}" th:errors="*{birthplace}"></td>
+			</tr>
+			<tr>
+				<td>Data di nascita:</td>
+				<td><input type="date" th:field="*{dateofbirth}" /></td>
+				<td th:if="${#fields.hasErrors('dateofbirth')}" th:errors="*{dateofbirth}"></td>
+			</tr>
+			<tr>
+				<td>Data di morte:</td>
+				<td><input type="date" th:field="*{dateofdeath}" /></td>
+				<td th:if="${#fields.hasErrors('dateofdeath')}" th:errors="*{dateofdeath}"></td>
+			</tr>
+			<tr>
+				<td>Luogo di morte:</td>
+				<td><input type="text" th:field="*{placeofdeath}" /></td>
+				<td th:if="${#fields.hasErrors('placeofdeath')}" th:errors="*{placeofdeath}"></td>
+			</tr>
+			<tr>
+				<td><button type="submit">Invio</button></td>
+			</tr>	
+		</table>
 		</div>
 		</form>
 	</section>
