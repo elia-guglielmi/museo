@@ -142,14 +142,20 @@ section#opere a{
 
 section#opere table{
 background-color: white;
-width: 70%;
-padding-left: 3%;
+width: 100%;
+
 }
 
 section#opere td{
   height:20vh ;
-  padding-bottom: 10%;
+  border-bottom: groove;
+  padding: 3%;
   
+}
+
+td#descrizione {
+	width:40%;
+	border-left: groove;
 }
 
 section#opere td img{

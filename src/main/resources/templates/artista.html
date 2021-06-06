@@ -60,7 +60,7 @@
 					 th:text="|${opera.title}|"> titolo</a>
 			</td>
 			<td><img th:src="@{'/images/'+*{opera.picture}}" align="right"/></td>
-			<td>
+			<td id="descrizione">
 			&nbsp&nbsp&nbsp&nbsp&nbsp
 				<span th:text="${#strings.abbreviate(opera.description,20)}"></span>&nbsp&nbsp&nbsp&nbsp
 				<span><a th:href="@{'/opera' + '/' + ${opera.id}}">Read more</a></span>
