@@ -124,11 +124,16 @@ section div{
 section a{
   color:black;
   text-decoration:none;
+  padding-left: 3%;
 }
 
 section a:hover{
   color:coral;
   text-decoration:none;
+}
+
+table{
+	padding-left: 3%;
 }
 
 footer {
