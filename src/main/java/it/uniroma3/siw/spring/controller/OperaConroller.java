@@ -85,7 +85,8 @@ public class OperaConroller {
 	 		model.addAttribute("curatori", this.curatoreService.tutti());
 			return "admin/home.html";
 		}
-	//	model.addAttribute("opera",new Opera());
+		opera.setArtista(null);
+		opera.setCollezione(null);
 		model.addAttribute("collezioni",this.collezioneService.tutti());
 		model.addAttribute("artisti",this.artistaService.tutti());
 		return "operaForm.html";

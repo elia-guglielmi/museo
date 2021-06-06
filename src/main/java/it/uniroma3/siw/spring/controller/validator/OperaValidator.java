@@ -29,6 +29,9 @@ public class OperaValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "required");
 		if (!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
+			Opera opera=(Opera)o;
+			if (opera.getPicture()==null)
+				errors.reject("picture");
 			if (this.operaService.alreadyExists((Opera)o)) {
 				logger.debug("e' un duplicato");
 				errors.reject("duplicato");

@@ -65,8 +65,7 @@ public class CollezioneController {
 	     		model.addAttribute("curatori", this.curatoreService.tutti());
 	            return "admin/home.html";
 	        }
-
-	 //       model.addAttribute("collezione",collezione);
+	        collezione.setCuratore(null);
 			model.addAttribute("curatori",this.curatoreService.tutti());
 	        return "collezioneForm.html";
 	    }
