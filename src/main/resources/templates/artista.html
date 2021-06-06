@@ -52,13 +52,22 @@
 		</section>
 		<section id="opere">
 			<em>Opere</em>
-			<ul align="justify">
-				<li th:each="opera:${artista.opere}">Titolo:
-					<a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" 
+			<div>
+			<table>
+			<tr th:each="opera:${artista.opere}">
+			<td>Titolo:</td>
+			<td><a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" 
 					 th:text="|${opera.title}|"> titolo</a>
-					<img th:src="@{'/images/'+*{opera.picture}}" align="right"/>
-				</li>
-			</ul>
+			</td>
+			<td><img th:src="@{'/images/'+*{opera.picture}}" align="right"/></td>
+			<td>
+			&nbsp&nbsp&nbsp&nbsp&nbsp
+				<span th:text="${#strings.abbreviate(opera.description,20)}"></span>&nbsp&nbsp&nbsp&nbsp
+				<span><a th:href="@{'/opera' + '/' + ${opera.id}}">Read more</a></span>
+			</td>
+			</tr>
+			</table>
+			</div>
 		</section>
 			<footer th:replace="fragments/base.html ::  fondo(home='/')">
 	</footer>

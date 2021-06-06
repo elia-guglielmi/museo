@@ -118,6 +118,7 @@ section {
 
 section#biografia p{
   background-color : white;
+  padding-left: 3%;
 }
 
 section#dati-anagrafici ul{
@@ -129,7 +130,7 @@ section#dati-anagrafici li{
   background-color: white;
 
 }
-section#opere ul{
+section#opere div{
 
   background-color:white;
   
@@ -139,16 +140,21 @@ section#opere a{
   color: black;
 }
 
-section#opere li{
+section#opere table{
+background-color: white;
+width: 70%;
+padding-left: 3%;
+}
+
+section#opere td{
   height:20vh ;
   padding-bottom: 10%;
   
 }
 
-section#opere li img{
+section#opere td img{
   width:30vh;
   height: 100%;
-  margin-right: 25%;
   
 }
 
