@@ -75,6 +75,7 @@
 		</dependency>
 	</dependencies>
 	<build>
+	<finalName>springboot-web-app-museo</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

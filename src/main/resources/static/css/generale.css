@@ -2,7 +2,6 @@ body {
   margin: 0;
 }
 
-
 div#hormenu {
 position: fixed;
 z-index: 1;
@@ -90,6 +89,7 @@ nav img{
 	padding: 0px 10px 0px 0px;
 }
 
+
 header {
   background-image: url("https://static.bimago.com/mediacache/catalog/product/cache/2/7/49572/image/650x440/07e42669fce400295ef77fc881587f80/49572_1.jpg");
   background-clip: border-box;
@@ -102,7 +102,7 @@ header h1{
       padding-top:4%;
   padding-right:2%;
   color: coral; 
-  font-size: 80px;
+  font-size: 100px;
 
 }
 
@@ -121,19 +121,97 @@ section div{
   background-color:white
 }
 
+
+section p{
+  background-color:white;
+ 
+}
+
+section ul{
+  background-color: white;
+  list-style-type: none;
+}
+
 section a{
   color:black;
   text-decoration:none;
-  padding-left: 3%;
+
 }
 
-section a:hover{
-  color:coral;
-  text-decoration:none;
+section li{
+
+  padding-bottom: 10%;
+  
+}
+
+#dati-anagrafici li{
+  padding-bottom: 0%;
 }
 
 table{
 	padding-left: 3%;
+}
+
+section#opere table{
+background-color: white;
+width: 100%;
+padding-left: 0%;
+
+}
+
+section#opere td{
+  height:20vh ;
+  border-bottom: groove;
+  padding: 3%;
+  
+}
+
+td#descrizione {
+	width:40%;
+	border-left: groove;
+}
+
+section#opere td img{
+  width:30vh;
+  height: 100%;
+  
+}
+
+
+section a:hover
+{
+color: coral;
+text-decoration: none;
+}
+
+
+section#collezioni ul img{
+  height:80%;
+  width:30%;
+  position: relative;
+  top: -50px;
+  left:60%;
+}
+
+
+footer#contatti {
+  background-color: gray;
+  height: 200px;
+}
+
+footer#contatti  div{
+	position:relative;
+	top:-40px;
+	font-size: 20px;
+  	color: coral;
+  	text-align: center;
+}
+
+
+footer#contatti  img{
+	height:50px;
+	width:50px;
+	padding: 5px 15px 0px 0px;
 }
 
 footer {
@@ -159,9 +237,11 @@ footer img{
 	padding: 5px 15px 0px 0px;
 }
 
+
 html {
   scroll-behavior: smooth;
 }
+
 
 
 
