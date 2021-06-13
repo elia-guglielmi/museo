@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <title>collezione</title>
-<link th:href="@{/css/generale.css}" rel="stylesheet" />
-  </head>
+  <head th:replace="fragments/base.html :: headerfiles(title='Admin')"> </head>
   <body>
     <div id="hormenu"><!-- div che contiene il menu -->
 <ul> <!-- lista principale: definisce il menu nella sua interezza -->
 <li>
 <a href="#"><img src="/images/icons8-menu-48.png"/></a> <!-- primo list-item, prima voce del menu -->
 <ul> <!-- Lista annidata: voci del sotto-menu -->
+<li><a href="#op">Opere</a></li>
+<li><a href="#art">Artisti</a></li>
+<li><a href="#coll">Collezioni</a></li>
+<li><a href="#cur">Curatori</a></li>
 <li><a href="/">home</a></li>
 
 </ul> <!-- Fine del sotto-menu -->
@@ -21,7 +21,7 @@
 		</nav>
 	<header th:replace="fragments/base.html :: intestazione(nome='Menu Amministratore')">
 	</header>
-    <section>
+    <section id="op">
       <!-- elenco opere --> 
        <em>Opere</em>
             <div>
@@ -38,7 +38,7 @@
             </div>
       <a href="/admin/opera">aggiungi opera</a>
     </section>  
-      <section>
+      <section id="art">
       <!-- elenco artisti --> 
        <em>Artisti</em>
             <div>
@@ -55,7 +55,7 @@
             </div>
         <a href="/admin/artista">aggiungi artista</a>
     </section>  
-      <section>
+      <section id="coll">
       <!-- elenco collezioni --> 
        <em>Collezioni</em>
             <div>
@@ -72,9 +72,9 @@
             </div>
         <a href="/admin/collezione">aggiungi collezione</a>
     </section> 
-    <section> 
+    <section id="cur"> 
     <!-- elenco artisti --> 
-       <em>curatori</em>
+       <em>Curatori</em>
             <div>
             <table>
               <tr th:each="curatore:${curatori}">

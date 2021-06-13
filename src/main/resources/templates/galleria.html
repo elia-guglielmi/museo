@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="utf-8">
-  <title>galleria</title>
-<link th:href="@{/css/galleria.css}" rel="stylesheet" />
-</head>
+<head th:replace="fragments/base.html :: headerfiles(title='Galleria')"> </head>
 <body>
   <body>
     <div id="hormenu"><!-- div che contiene il menu -->
@@ -48,13 +44,23 @@
            </form>	
              </div>
 		</div>
-        <ul align="justify">
-				<li th:each="opera:${opere}">Titolo:
-					<a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" 
+		<p></p>
+			<div>
+			<table>
+			<tr th:each="opera:${opere}">
+			<td>Titolo:</td>
+			<td><a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" 
 					 th:text="|${opera.title}|"> titolo</a>
-					<img src="#" align="right">
-				</li>
-			</ul>
+			</td>
+			<td><img th:src="@{'/images/'+*{opera.picture}}" align="right"/></td>
+			<td id="descrizione">
+			&nbsp&nbsp&nbsp&nbsp&nbsp
+				<span th:text="${#strings.abbreviate(opera.description,20)}"></span>&nbsp&nbsp&nbsp&nbsp
+				<span><a th:href="@{'/opera' + '/' + ${opera.id}}">Read more</a></span>
+			</td>
+			</tr>
+			</table>
+			</div>
       </section>
      	<footer th:replace="fragments/base.html ::  fondo(home='/')">
 	</footer>

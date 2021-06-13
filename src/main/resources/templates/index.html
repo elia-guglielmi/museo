@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="utf-8">
-	<title>home</title>
-	<link th:href="@{/css/generale.css}" rel="stylesheet" />
-</head>
+<head th:replace="fragments/base.html :: headerfiles(title='Home')"> </head>
 
 <body>
 	<div id="hormenu">
@@ -22,6 +18,7 @@
 					<li><a href="#contatti">Contatti</a></li>
 					<li><a href="galleria">Cerca in galleria</a></li>
 					<li><a href="login">Accedi</a></li>
+					<li><a href="logout">logout</a></li>
 					<li><a href="admin">Menu admin</a></li>
 
 				</ul> <!-- Fine del sotto-menu -->
