@@ -1,31 +1,40 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head th:fragment="headerfiles(title)">
 	<meta charset="UTF-8" />
 	<link th:href="@{/css/generale.css}" rel="stylesheet">
 	<title th:text="${title}"></title>
 </head>
+
 <body>
 	<header th:fragment="intestazione(nome)">
-	<h1>
+		<h1>
 			<em th:text="${nome}"></em>
 		</h1>
 	</header>
 	<nav th:fragment="inizio">
-      <img src="/images/logo_small.png"><!---questo è il logo---> 
-    </nav>
+			<img src="/images/logo_small.png" /><!---questo è il logo--->
+			<div>
+			<form th:action="@{/galleria}" method="get">
+				<input type="text" id="search" name="keyword" />
+				<button type="submit">search</button>
+			</form>
+			</div>
+	</nav>
 
 	<p>Go to the next page to see fragments in action</p>
 	<aside>
 		<div>This is a sidebar</div>
 	</aside>
 	<div class="another">This is another sidebar</div>
-	
+
 	<footer th:fragment="fondo">
 		<img src="/images/logo_small.png">
 		<div>
-		<a th:href="@{${home}}">Home</a>
+			<a th:href="@{${home}}">Home</a>
 		</div>
 	</footer>
 </body>
+
 </html>

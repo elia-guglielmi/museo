@@ -25,6 +25,7 @@
 	</header>
 	<section>
 		<em>dati collezione</em>
+		<p>Attenzione verificare chhe il curatore della collezione sia gia presente nell elenco sottoindicato altrimenti:  <a href="/admin/curatore">aggiungi curatore</a></p>
 		<form th:action="@{/admin/collezione}" method="POST" th:object="${collezione}">
 			<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>

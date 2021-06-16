@@ -85,7 +85,12 @@ nav {
   width:100%
 }
 
+nav div{
+	margin-right: 5%;
+}
+
 nav img{
+	float: right;
 	height:40px;
 	width:40px;
 	padding: 0px 10px 0px 0px;
@@ -107,6 +112,25 @@ header h1{
   font-size: 100px;
 
 }
+
+header#opera {
+  background-clip: border-box;
+  background-color: antiquewhite;
+  background-image: none;
+  border:none;
+  height: 300px;
+  border-top:solid;
+}
+
+header#opera h1{
+  text-align:center;
+      padding-top:4%;
+  padding-right:2%;
+  color: coral; 
+  font-size: 100px;
+
+}
+
 #flex-container {
   display: flex;
  flex-direction: row;
@@ -222,6 +246,46 @@ section#collezioni ul img{
   position: relative;
   top: -50px;
   left:60%;
+}
+
+section#immagine {
+  background-color:floralwhite;
+}
+
+
+section#immagine img{
+  width:100%;
+  height:100%;
+  border:solid;
+  border-width: thick;
+}
+
+section#immagine div{
+  background-color: floralwhite;
+  text-align:end;
+}
+
+section#immagine a{
+  color: black;
+  text-align:end;
+  text-decoration:none;
+  font-style: italic;
+   
+}
+
+section#immagine a:hover{
+  color: coral;
+  text-align:end;
+  text-decoration:none;
+}
+
+section#descrizione {
+  text-align: center;
+}
+
+section#descrizione p{
+  background-color : floralwhite;
+  text-align: center;
 }
 
 div#curatore span{

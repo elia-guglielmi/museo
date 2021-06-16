@@ -24,6 +24,8 @@
 	</header>
 	<section>
 		<em>dati opera</em>
+		<p>Attenzione verificare che l'autore dell'opera da inserire e la collezione in cui inserirla siano presenti negli elenchi sotto indicati altrimenti: 
+		 <a href="/admin/artista">aggiungi artista</a>,  <a href="/admin/collezione">aggiungi collezione</a></p>
 		<form th:action="@{/admin/opera}" method="POST" enctype="multipart/form-data" th:object="${opera}">
 			<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
