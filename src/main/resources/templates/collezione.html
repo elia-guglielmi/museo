@@ -26,27 +26,45 @@
 			<em th:text="|${collezione.name}|">Nome Collezione</em>
 		</h1>
 	</header>
+	<section>
+			<em>Descrizione</em>
+			<div id="flex-container">
+				<div class="col">
+					<p align="justify" th:text="|${collezione.description}|">
+				</div>
+				<div class="col">
+					<div th:unless="${#lists.isEmpty(collezione.opere)}">
+           <img th:src="@{'/images/'+*{collezione.opere[0].picture}}"/>
+        	</div>
+        	<div th:unless="${#lists.isEmpty(collezione.opere)}">
+        	(<span th:text="|${collezione.opere[0].title}, ${collezione.opere[0].artista.firstname} ${collezione.opere[0].artista.lastname}|"></span>)
+        </div>
+      </div>
+			</div>
+		</section>
 	<section id="opere">
 		<!-- elenco opere -->
 		<em>Opere</em>
-		<div id="flex-container">
-			<div class="col">
-				<ul>
-					<li th:each="opera:${collezione.opere}">Titolo:
-						<a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" th:text="|${opera.title}|">
-							titolo</a>
-					</li>
-				</ul>
+		<div>
+			<table>
+			<tr th:each="opera:${collezione.opere}">
+			<td><p>Titolo: <a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" 
+					 th:text="|${opera.title}|"> titolo</a>
+					 </p>
+					 <p>
+				Artista: <a href="opera.html" th:href="@{'/artista' + '/' + ${opera.artista.id}}" 
+					 th:text="|${opera.artista.firstname} ${opera.artista.lastname}|"> artista</a>
+					 </p>
+			</td>
+			<td><img th:src="@{'/images/'+*{opera.picture}}" align="right"/></td>
+			<td id="descrizione">
+			&nbsp&nbsp&nbsp&nbsp&nbsp
+				<span th:text="${#strings.abbreviate(opera.description,20)}"></span>&nbsp&nbsp&nbsp&nbsp
+				<span><a th:href="@{'/opera' + '/' + ${opera.id}}">Read more</a></span>
+			</td>
+			</tr>
+			</table>
 			</div>
-			<div class="col">
-				<ul>
-					<li th:each="opera:${collezione.opere}">Autore:
-						<a href="opera.html" th:href="@{'/artista' + '/' + ${opera.artista.id}}"
-							th:text="|${opera.artista.firstname} ${opera.artista.lastname}|"> nome cognome</a>
-					</li>
-				</ul>
-			</div>
-		</div>
 		<div id="curatore">
 			<em>Curatore:</em>
 			<span th:text="|${collezione.curatore.firstname} ${collezione.curatore.lastname}|">Nome Cognome</span>

@@ -11,7 +11,8 @@
 			<ul>
 				<!-- lista principale: definisce il menu nella sua interezza -->
 				<li>
-					<a href="#"><img src="/images/icons8-menu-48.png"/></a> <!-- primo list-item, prima voce del menu -->
+					<a href="#"><img src="/images/icons8-menu-48.png" /></a>
+					<!-- primo list-item, prima voce del menu -->
 					<ul>
 						<!-- Lista annidata: voci del sotto-menu -->
 						<li><a href="#biografia">Biografia</a></li>
@@ -26,13 +27,22 @@
 		<nav th:replace="fragments/base.html :: inizio">
 		</nav>
 		<header th:replace="fragments/base.html :: intestazione(nome=|${artista.firstname} ${artista.lastname}|)">
-	</header>
+		</header>
 		<section id="biografia">
 			<em>Biografia</em>
-			<p align="justify" th:text="|${artista.biography}|">
-			biografia
-				<img src="#" align="right">
-			</p>
+			<div id="flex-container">
+				<div class="col">
+					<p align="justify" th:text="|${artista.biography}|">
+				</div>
+				<div class="col">
+					<div th:unless="${#lists.isEmpty(artista.opere)}">
+           <img th:src="@{'/images/'+*{artista.opere[0].picture}}"/>
+        	</div>
+        	<div th:unless="${#lists.isEmpty(artista.opere)}">
+        	(<span th:text="|${artista.opere[0].title}, ${artista.opere[0].year}|"></span>)
+        </div>
+      </div>
+			</div>
 		</section>
 		<section id="dati-anagrafici" >
 			<em>Dati Anagrafici</em>

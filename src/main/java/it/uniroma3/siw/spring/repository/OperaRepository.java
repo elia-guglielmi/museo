@@ -21,7 +21,8 @@ public interface OperaRepository extends CrudRepository<Opera, Long>{
 	
 	public void deleteById(Long id);
 	
-	@Query(value="select o.* from Opera o left join Artista a on o.artista_id=a.id where a.firstname like %:keyword% or a.lastname like %:keyword% or o.title like %:keyword%", nativeQuery = true)
+	
+	@Query(value="select o.* from Opera o left join Artista a on o.artista_id=a.id left join Collezione c on o.collezione_id=c.id where a.firstname like %:keyword% or a.lastname like %:keyword% or o.title like %:keyword% or c.name like %:keyword%", nativeQuery = true)
 	public List<Opera> findByKeyword(@Param("keyword") String keyword);
 	
 }
