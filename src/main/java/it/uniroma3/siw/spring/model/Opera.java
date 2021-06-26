@@ -25,7 +25,8 @@ public class Opera {
 	@Column(nullable = false)
 	private int year;
 
-	@Column(nullable = false,length = 2000)
+	@Lob
+	@Column(nullable = false)
 	private String description;
 
 	@ManyToOne

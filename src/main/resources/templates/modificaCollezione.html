@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/base.html :: headerfiles(title='ModificaCollezione')"> </head>
+<body>
+	<div id="hormenu">
+		<!-- div che contiene il menu -->
+		<ul>
+			<!-- lista principale: definisce il menu nella sua interezza -->
+			<li>
+				<a href="#"><img src="/images/icons8-menu-48.png"/></a> <!-- primo list-item, prima voce del menu -->
+				<ul>
+					<!-- Lista annidata: voci del sotto-menu -->
+					<li><a href="/">home</a></li>
+					<li><a href="/admin">Menu admin</a></li>
+
+				</ul> <!-- Fine del sotto-menu -->
+			</li> <!-- Chiudo il list-item -->
+			<!--qui altri list-item -->
+	</div>
+		<nav th:replace="fragments/base.html :: inizio">
+		</nav>
+	<header th:replace="fragments/base.html :: intestazione(nome='Modifica Collezione')">
+	</header>
+	<section>
+		<em>dati opera</em>
+		<form th:action="@{'/admin/modificaCollezione' + '/' + ${collezione.id}}" method="POST" enctype="multipart/form-data" th:object="${collezione}">
+		</div>		
+		<div>
+		<table class="update">
+			<tr>
+				<td>Titolo: <span th:text="*{name}"></span></td>
+				<td>modifica titolo:<input type="text" name="name" /></td>
+			</tr>		
+			<tr>
+				<td>Descrizione: <span th:text="*{description}"></span></td>
+				<td>modifica descrizione:<input type="text" name="description" /></td>
+			</tr>
+			<tr>
+				<td>Curatore: <span th:text="|*{curatore.firstname} *{curatore.lastname}|"></span></td>
+			</tr>
+			<tr>
+			<td></td>
+				<td><button type="submit">Invio</button></td>
+			</tr>
+		</table>
+		</div>
+		</form>
+	</section>
+	<footer th:replace="fragments/base.html ::  fondo(home='/')">
+	</footer>
+</body>
+
+</html>

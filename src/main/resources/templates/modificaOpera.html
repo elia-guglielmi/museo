@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/base.html :: headerfiles(title='ModificaOpera')"> </head>
+<body>
+	<div id="hormenu">
+		<!-- div che contiene il menu -->
+		<ul>
+			<!-- lista principale: definisce il menu nella sua interezza -->
+			<li>
+				<a href="#"><img src="/images/icons8-menu-48.png"/></a> <!-- primo list-item, prima voce del menu -->
+				<ul>
+					<!-- Lista annidata: voci del sotto-menu -->
+					<li><a href="/">home</a></li>
+					<li><a href="/admin">Menu admin</a></li>
+
+				</ul> <!-- Fine del sotto-menu -->
+			</li> <!-- Chiudo il list-item -->
+			<!--qui altri list-item -->
+	</div>
+		<nav th:replace="fragments/base.html :: inizio">
+		</nav>
+	<header th:replace="fragments/base.html :: intestazione(nome='Modifica Opera')">
+	</header>
+	<section>
+		<em>dati opera</em>
+		<form th:action="@{'/admin/modificaOpera' + '/' + ${opera.id}}" method="POST" enctype="multipart/form-data" th:object="${opera}">
+		</div>		
+		<div>
+		<table class="update">
+			<tr>
+				<td>Titolo: <span th:text="*{title}"></span></td>
+				<td>modifica titolo:<input type="text" name="title" /></td>
+			</tr>		
+			<tr>
+				<td>Anno: <span th:text="*{year}"></span></td>
+				<td>modifica anno:<input type="number" name="year" /></td>
+
+			</tr>
+			<tr>
+				<td>Descrizione: <span th:text="*{description}"></span></td>
+				<td>modifica descrizione:<input type="text" name="description" /></td>
+			</tr>
+			<tr>
+				<td>Artista: <span th:text="|*{artista.firstname} *{artista.lastname}|"></span></td>
+			</tr>
+			<tr>
+				<td>Collezione:<span th:text="*{collezione.name}"></span></td>
+			</tr>
+			<tr>
+			<td><img th:src="@{'/images/'+*{picture}}" align="right"/></td>
+				<td><input type="file" name="file" accept="image/png, image/jpeg" /></td>
+			</tr>
+			<tr>
+			<td></td>
+				<td><button type="submit">Invio</button></td>
+			</tr>
+		</table>
+		</div>
+		</form>
+	</section>
+	<footer th:replace="fragments/base.html ::  fondo(home='/')">
+	</footer>
+</body>
+
+</html>

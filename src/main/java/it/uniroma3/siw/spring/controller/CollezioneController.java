@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.uniroma3.siw.spring.controller.validator.CollezioneValidator;
 import it.uniroma3.siw.spring.model.Artista;
 import it.uniroma3.siw.spring.model.Collezione;
+import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.service.ArtistaService;
 import it.uniroma3.siw.spring.service.CollezioneService;
 import it.uniroma3.siw.spring.service.CuratoreService;
@@ -69,4 +70,27 @@ public class CollezioneController {
 			model.addAttribute("curatori",this.curatoreService.tutti());
 	        return "collezioneForm.html";
 	    }
+	 
+	 @RequestMapping(value = "/admin/modificaCollezione/{id}", method = RequestMethod.GET)
+		public String modificaOpera(@PathVariable("id") Long id, Model model) {
+			model.addAttribute("collezione", this.collezioneService.collezionePerId(id));
+			return "modificaCollezione.html";
+		}
+		
+		@RequestMapping(value = "/admin/modificaCollezione/{id}", method = RequestMethod.POST)
+		public String modificaOpera(@PathVariable("id") Long id,Model model,String name,String description) {
+			Collezione collezione=this.collezioneService.collezionePerId(id);
+			if(name!=null&&!name.equals("")) {
+				collezione.setName(name);
+			}
+			if(description!=null&&!description.equals("")) {
+				collezione.setDescription(description);
+			}
+			this.collezioneService.inserisci(collezione);
+			model.addAttribute("artisti", this.artistaService.tutti());
+			model.addAttribute("collezioni", this.collezioneService.tutti());
+			model.addAttribute("opere", this.operaService.tutti());
+	 		model.addAttribute("curatori", this.curatoreService.tutti());
+			return "admin/home.html";
+		}
 }

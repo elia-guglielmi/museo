@@ -68,6 +68,7 @@ public class OperaConroller {
 		model.addAttribute("artisti",this.artistaService.tutti());
 		return "operaForm.html";
 	}
+	
 
 	@RequestMapping(value = "/admin/opera", method = RequestMethod.POST)
 	 public String addOpera(@ModelAttribute("opera") Opera opera,@RequestParam("file")MultipartFile file,
@@ -91,5 +92,32 @@ public class OperaConroller {
 		model.addAttribute("artisti",this.artistaService.tutti());
 		return "operaForm.html";
 		}
+	
+	@RequestMapping(value = "/admin/modificaOpera/{id}", method = RequestMethod.GET)
+	public String modificaOpera(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("opera", this.operaService.operaPerId(id));
+		return "modificaOpera.html";
+	}
+	
+	@RequestMapping(value = "/admin/modificaOpera/{id}", method = RequestMethod.POST)
+	public String modificaOpera(@PathVariable("id") Long id,Model model,String title,Integer year,String description) {
+		Opera opera=this.operaService.operaPerId(id);
+		if(title!=null&&!title.equals("")) {
+			opera.setTitle(title);
+		}
+		if(year!=null&&year!=0) {
+			opera.setYear(year);
+		}
+		if(description!=null&&!description.equals("")) {
+			opera.setDescription(description);
+		}
+		this.operaService.inserisci(opera);
+		model.addAttribute("artisti", this.artistaService.tutti());
+		model.addAttribute("collezioni", this.collezioneService.tutti());
+		model.addAttribute("opere", this.operaService.tutti());
+ 		model.addAttribute("curatori", this.curatoreService.tutti());
+		return "admin/home.html";
+	}
+	
 	
 }

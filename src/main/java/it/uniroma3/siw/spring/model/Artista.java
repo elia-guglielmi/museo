@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -43,7 +44,8 @@ public class Artista {
 	private String placeofdeath;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateofdeath;
-	@Column(nullable = false ,length = 2000)
+	@Lob
+	@Column(nullable = false)
 	private String biography;
 	
 	

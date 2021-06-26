@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-size: larger;
-  background-color: antiquewhite;
+  background-color: wheat;
 }
 
 div#hormenu {
@@ -96,10 +96,62 @@ nav img{
 	padding: 0px 10px 0px 0px;
 }
 
+button#cerca{
+	background-image: url("https://img.icons8.com/ios/452/search--v1.png");
+	background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 2%;
+  color:transparent;
+}
+
+button.rimuovi{
+	border-radius: 10%;
+	color:red;
+	border:solid;
+	border-color: red;
+	width:20%;
+}
+
+button.rimuovi:hover{
+	background-color: red;
+	color:white;
+}
+
+button.add{
+	border-radius: 10%;
+	color:green;
+	border:solid;
+	border-color: green;
+	width:20%;
+}
+
+button.add:hover{
+	background-color: green;
+	color:white;
+}
+
+button.update{
+	border-radius: 10%;
+	color:goldenrod;
+	border:solid;
+	border-color: goldenrod;
+	width:20%;
+}
+
+button.update:hover{
+	background-color: goldenrod;
+	color:white;
+}
+
 
 header {
-  background-image: url("https://static.bimago.com/mediacache/catalog/product/cache/2/7/49572/image/650x440/07e42669fce400295ef77fc881587f80/49572_1.jpg");
   background-clip: border-box;
+    background-image: url("https://www.artgeist.it/mediacache/catalog/product/cache/3/7/27773/image/653x486/af2183cdeeda922244a02b7d1dc1dca2/27773_1.jpg");
+    background-image: url("https://media-cdn.tripadvisor.com/media/photo-s/13/7d/e0/3b/museo-san-pietro-la-sala.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 400px;
   border:solid;
 }
@@ -115,7 +167,6 @@ header h1{
 
 header#opera {
   background-clip: border-box;
-  background-color: antiquewhite;
   background-image: none;
   border:none;
   height: 300px;
@@ -142,7 +193,11 @@ div.col {
 }
 
 .col img{
-	height:15vh;
+	height:30vh;
+}
+.col div{
+	text-align: center;
+	padding:5%;
 }
 .col p{
 	padding-left:6%;
@@ -214,6 +269,21 @@ section li{
 
 table{
 	padding-left: 3%;
+width: 100%;
+}
+
+table.update td{
+	width:50%;
+	border:solid;
+	border-color: gray;
+	color: coral;
+}
+.update span{
+	color: black;
+}
+
+.update img{
+	width: 100%;
 }
 
 section#opere table{
@@ -228,6 +298,10 @@ section#opere td{
   border-bottom: groove;
   padding: 3%;
   
+}
+
+td.titolo{
+	width:30%;
 }
 
 td#descrizione {
@@ -294,13 +368,12 @@ section#immagine a:hover{
   text-decoration:none;
 }
 
-section#descrizione {
-  text-align: center;
-}
+
 
 section#descrizione p{
   background-color : floralwhite;
-  text-align: center;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 div#curatore span{

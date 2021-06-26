@@ -64,5 +64,37 @@ public class CuratoreController {
 	        }
 	        return "curatoreForm.html";
 	    }
+	 
+	 @RequestMapping(value = "/admin/modificaCuratore/{id}", method = RequestMethod.GET)
+		public String modificaCuratore(@PathVariable("id") Long id, Model model) {
+			model.addAttribute("curatore", this.curatoreService.curatorePerId(id));
+			return "modificaCuratore.html";
+		}
+		
+		@RequestMapping(value = "/admin/modificaCuratore/{id}", method = RequestMethod.POST)
+		public String modificaCuratore(@PathVariable("id") Long id,Model model,String firstname,String lastname,String email,String phonenumber,String birthplace) {
+			Curatore curatore=this.curatoreService.curatorePerId(id);
+			if(firstname!=null&&!firstname.equals("")) {
+				curatore.setFirstname(firstname);
+			}
+			if(lastname!=null&&!lastname.equals("")) {
+				curatore.setLastname(lastname);
+			}if(email!=null&&!email.equals("")) {
+				curatore.setEmail(email);
+			}
+			if(phonenumber!=null&&!phonenumber.equals("")) {
+				curatore.setPhonenumber(phonenumber);
+			}
+			if(birthplace!=null&&!birthplace.equals("")) {
+				curatore.setBirthplace(birthplace);
+			}
+			
+			this.curatoreService.inserisci(curatore);
+			model.addAttribute("artisti", this.artistaService.tutti());
+			model.addAttribute("collezioni", this.collezioneService.tutti());
+			model.addAttribute("opere", this.operaService.tutti());
+	 		model.addAttribute("curatori", this.curatoreService.tutti());
+			return "admin/home.html";
+		}
 
 }

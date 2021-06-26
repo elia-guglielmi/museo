@@ -27,17 +27,28 @@
             <div>
             <table>
               <tr th:each="opera:${opere}">
-                <td  th:text="|${opera.title}|">titolo </td> 
+                <td  class="titolo" th:text="|${opera.title}|">titolo </td> 
                 <td>
+                
                 <form th:action="@{'/admin/rimuoviopera' + '/' + ${opera.id}}" method="GET">
-                 <button type="submit">rimuovi</button>
-                 </td>
+                 <button class="rimuovi" type="submit">rimuovi</button>
                 </form>
+                </td>
+                <td>
+                 <form th:action="@{'/admin/modificaOpera' + '/' + ${opera.id}}" method="GET">
+                 <button  class="update" type="submit">modifica</button>
+                </form>
+                </td> 
               </tr>
               <tr>
-              <td>
+              <td class="titolo">
               <a href="/admin/opera">aggiungi opera</a></a>
               </td>
+              <td>
+                <form th:action="@{admin/opera}" method="GET">
+                 <button class="add" type="submit">aggiungi</button>
+                </form>
+               </td>
               </tr>
             </table>
             </div>
@@ -48,17 +59,27 @@
             <div>
             <table>
               <tr th:each="artista:${artisti}">
-               <td  th:text="|${artista.firstname} ${artista.lastname}|">titolo </td>
+               <td class="titolo" th:text="|${artista.firstname} ${artista.lastname}|">titolo </td>
                <td>
                 <form th:action="@{'/admin/rimuoviartista' + '/' + ${artista.id}}" method="GET">
-                 <button type="submit">rimuovi</button>
+                 <button class="rimuovi" type="submit">rimuovi</button>
                 </form>
                </td>
+                <td>
+                 <form th:action="@{'/admin/modificaArtista' + '/' + ${artista.id}}" method="GET">
+                 <button  class="update" type="submit">modifica</button>
+                </form>
+                </td> 
               </tr>
                <tr>
-              <td>
-              <a href="/admin/opera">aggiungi artista</a></a>
+              <td class="titolo">
+              <a href="/admin/artista">aggiungi artista</a></a>
               </td>
+              <td>
+                <form th:action="@{admin/artista}" method="GET">
+                 <button class="add" type="submit">aggiungi</button>
+                </form>
+               </td>
               </tr>
             </table>
             </div>
@@ -69,17 +90,27 @@
             <div>
             <table>
               <tr th:each="collezione:${collezioni}">
-                <td  th:text="|${collezione.name}|">titolo </td> 
+                <td class="titolo" th:text="|${collezione.name}|">titolo </td> 
                 <td>
                 <form th:action="@{'/admin/rimuovicollezione' + '/' + ${collezione.id}}" method="GET">
-                 <button type="submit">rimuovi</button>
+                 <button class="rimuovi" type="submit">rimuovi</button>
                 </form>
 				</td>
+				 <td>
+                 <form th:action="@{'/admin/modificaCollezione' + '/' + ${collezione.id}}" method="GET">
+                 <button  class="update" type="submit">modifica</button>
+                </form>
+                </td> 
               </tr>
                <tr>
-              <td>
-              <a href="/admin/opera">aggiungi collezione</a></a>
+              <td class="titolo">
+              <a href="/admin/collezione">aggiungi collezione</a></a>
               </td>
+              <td>
+                <form th:action="@{admin/collezione}" method="GET">
+                 <button class="add" type="submit">aggiungi</button>
+                </form>
+               </td>
               </tr>
             </table>
             </div>
@@ -90,17 +121,26 @@
             <div>
             <table>
               <tr th:each="curatore:${curatori}">
-               <td  th:text="|${curatore.firstname} ${curatore.lastname}|">titolo </td>
+               <td class="titolo" th:text="|${curatore.firstname} ${curatore.lastname}|">titolo </td>
                <td>
                 <form th:action="@{'/admin/rimuovicuratore' + '/' + ${curatore.matricola}}" method="GET">
-                 <button type="submit">rimuovi</button>
+                 <button class="rimuovi" type="submit">rimuovi</button>
                 </form>
 				</td>
+				<td>
+                 <form th:action="@{'/admin/modificaCuratore' + '/' + ${curatore.matricola}}" method="GET">
+                 <button  class="update" type="submit">modifica</button>
+                </form>
               </tr>
                <tr>
-              <td>
-              <a href="/admin/opera">aggiungi curatore</a></a>
+              <td class="titolo">
+              <a href="/admin/curatore">aggiungi curatore</a></a>
               </td>
+              <td>
+                <form th:action="@{admin/curatore}" method="GET">
+                 <button class="add" type="submit">aggiungi</button>
+                </form>
+               </td>
               </tr>
             </table>
             </div>

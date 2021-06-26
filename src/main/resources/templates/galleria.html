@@ -1,61 +1,73 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Galleria')"> </head>
-<body>
-  <body>
-    <div id="hormenu"><!-- div che contiene il menu -->
-<ul> <!-- lista principale: definisce il menu nella sua interezza -->
-<li>
-<a href="#"><img src="/images/icons8-menu-48.png"/></a> <!-- primo list-item, prima voce del menu -->
-<ul> <!-- Lista annidata: voci del sotto-menu -->
-<li><a href="/">Home</a></li>
 
-</ul> <!-- Fine del sotto-menu -->
-</li> <!-- Chiudo il list-item -->
-<!--qui altri list-item -->
-</div>
+<head th:replace="fragments/base.html :: headerfiles(title='Galleria')"> </head>
+
+<body>
+
+	<body>
+		<div id="hormenu">
+			<!-- div che contiene il menu -->
+			<ul>
+				<!-- lista principale: definisce il menu nella sua interezza -->
+				<li>
+					<a href="#"><img src="/images/icons8-menu-48.png" /></a>
+					<!-- primo list-item, prima voce del menu -->
+					<ul>
+						<!-- Lista annidata: voci del sotto-menu -->
+						<li><a href="/">Home</a></li>
+
+					</ul> <!-- Fine del sotto-menu -->
+				</li> <!-- Chiudo il list-item -->
+				<!--qui altri list-item -->
+		</div>
 		<nav th:replace="fragments/base.html :: inizio">
 		</nav>
-	<header th:replace="fragments/base.html :: intestazione(nome='Cerca in Galleria')">
-	</header>
-      <section id="opere">
-        <em>Opere</em>
-        <div id="flex-container">
-          <div class="col">
-			<div>
-				<span>Cerca per titolo o autore:</span>
-			</div>		
-          <div>
-				<span>Cerca per anno:</span>
+		<header th:replace="fragments/base.html :: intestazione(nome='Galleria')">
+		</header>
+		<section id="opere">
+			<em>Opere</em>
+			<div id="flex-container">
+				<div class="col">
+					<div>
+						<span>Cerca per titolo o autore:</span>
+					</div>
+					<div>
+						<span>Cerca per anno:</span>
+					</div>
+				</div>
+				<div class="col">
+					<form th:action="@{/galleria}" method="get">
+						<div>
+							<span><input type="text" id="search" name="keyword" /></span>
+							<span><button type="submit">cerca</button></span>
+						</div>
+					</form>
+					<form th:action="@{/galleria}" method="get">
+						<div>
+							<span><input type="number" id="search" name="keynumber" /></span>
+							<span><button type="submit">cerca</button></span>
+						</div>
+					</form>
+				</div>
 			</div>
-          </div>
-           <div class="col">  
-           <form th:action="@{/galleria}" method="get">
-             <div>
-				<span ><input type="text" id="search" name="keyword" /></span>
-                 <span><button type="submit">cerca</button></span>
-			</div>	
-           </form>	
-         <form th:action="@{/galleria}" method="get">
-             <div>
-				<span ><input type="number" id="search" name="keynumber" /></span>
-                 <span><button type="submit">cerca</button></span>
-			</div>	
-           </form>	
-             </div>
-		</div>
-		<p></p>
+			<p></p>
 			<div>
-			<table>
-			<tr th:each="opera:${opere}">
-			<td>Titolo:</td>
-			<td><a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" 
-					 th:text="|${opera.title}|"> titolo</a>
-			</td>
-			<td><img th:src="@{'/images/'+*{opera.picture}}" align="right"/></td>
-			<td id="descrizione">
-			&nbsp&nbsp&nbsp&nbsp&nbsp
-				<span th:text="${#strings.abbreviate(opera.description,20)}"></span>&nbsp&nbsp&nbsp&nbsp
+				<table>
+					<tr th:each="opera:${opere}">
+						<td>
+							<p>Titolo: <a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}"
+									th:text="|${opera.title}|"> titolo</a>
+							</p>
+							<p>
+								Artista: <a href="opera.html" th:href="@{'/artista' + '/' + ${opera.artista.id}}"
+									th:text="|${opera.artista.firstname} ${opera.artista.lastname}|"> artista</a>
+							</p>
+						</td>
+						<td><img th:src="@{'/images/'+*{opera.picture}}" align="right" /></td>
+						<td id="descrizione">
+							&nbsp&nbsp&nbsp&nbsp&nbsp
+							<span th:text="${#strings.abbreviate(opera.description,40)}"></span>&nbsp&nbsp&nbsp
 				<span><a th:href="@{'/opera' + '/' + ${opera.id}}">Read more</a></span>
 			</td>
 			</tr>
