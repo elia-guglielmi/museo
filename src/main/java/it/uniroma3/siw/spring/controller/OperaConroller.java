@@ -73,10 +73,13 @@ public class OperaConroller {
 	@RequestMapping(value = "/admin/opera", method = RequestMethod.POST)
 	 public String addOpera(@ModelAttribute("opera") Opera opera,@RequestParam("file")MultipartFile file,
 				Model model, BindingResult bindingResult) throws IOException {
+		String fileName = "";
+		if(file!=null) {
+		fileName = StringUtils.cleanPath(file.getOriginalFilename());
+	    }
+		 opera.setPicture(fileName);
 		this.operaValidator.validate(opera, bindingResult);
 		if (!bindingResult.hasErrors()) {
-			String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		    opera.setPicture(fileName);   
 			Opera savedOpera=this.operaService.inserisci(opera);
 		    String uploadDir = "src/main/resources/static/images";
 		    FileUploadUtil.saveFile(uploadDir, fileName, file);
@@ -100,8 +103,24 @@ public class OperaConroller {
 	}
 	
 	@RequestMapping(value = "/admin/modificaOpera/{id}", method = RequestMethod.POST)
-	public String modificaOpera(@PathVariable("id") Long id,Model model,String title,Integer year,String description) {
+	public String modificaOpera(@PathVariable("id") Long id,Model model,String title,Integer year,String description,@RequestParam("file")MultipartFile file) {
 		Opera opera=this.operaService.operaPerId(id);
+		if(file!=null) {
+			String uploadDir = "src/main/resources/static/images";
+			try {
+				FileUploadUtil.deleteFile(uploadDir, opera.getPicture());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+			 opera.setPicture(fileName);
+			 try {
+				FileUploadUtil.saveFile(uploadDir, fileName, file);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		    }
 		if(title!=null&&!title.equals("")) {
 			opera.setTitle(title);
 		}
