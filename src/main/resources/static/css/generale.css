@@ -188,8 +188,27 @@ header#opera h1{
 }
 
 div.col {
-  background-color: floralwhite;
   width: 50%;
+  min-height: 30vh;
+}
+
+.col section{
+	height:inherit;
+	text-align: center;
+}
+
+.col section ul{
+	height:inherit;
+	padding: 0%;
+	 box-shadow: 10px 10px 8px #888888;
+
+}
+.col section li{
+	padding-top:5%;
+}
+
+.col section em{
+	padding:0% ;
 }
 
 .col img{
@@ -200,7 +219,7 @@ div.col {
 	padding:5%;
 }
 .col p{
-	padding-left:6%;
+	padding:6%;
 }
 
 div.col ul{
@@ -232,6 +251,7 @@ section em{
 section {
   background-color: gray;
   margin: 10% 15%;
+  box-shadow: 10px 10px 8px #888888;
 }
 
 section div{
@@ -260,9 +280,9 @@ section li{
   padding-bottom: 10%;
   
 }
-
-
-
+strong{
+	font-family:Georgia, 'Times New Roman', Times, serif;
+}
 #dati-anagrafici li{
   padding-bottom: 0%;
 }
@@ -386,6 +406,7 @@ div#curatore{
 
 
 }
+
 
 
 footer#contatti {

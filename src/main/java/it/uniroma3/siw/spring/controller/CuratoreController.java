@@ -60,7 +60,7 @@ public class CuratoreController {
 	    		model.addAttribute("collezioni", this.collezioneService.tutti());
 	    		model.addAttribute("opere", this.operaService.tutti());
 	     		model.addAttribute("curatori", this.curatoreService.tutti());
-	            return "admin/home.html";
+	            return "/admin/home.html";
 	        }
 	        return "curatoreForm.html";
 	    }

@@ -48,11 +48,11 @@
 		<div>
 			<table>
 			<tr th:each="opera:${collezione.opere}">
-			<td><p>Titolo: <a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" 
+			<td><p><strong>Titolo:</strong> <a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" 
 					 th:text="|${opera.title}|"> titolo</a>
 					 </p>
 					 <p>
-				Artista: <a href="opera.html" th:href="@{'/artista' + '/' + ${opera.artista.id}}" 
+				<strong>Artista:</strong> <a href="opera.html" th:href="@{'/artista' + '/' + ${opera.artista.id}}" 
 					 th:text="|${opera.artista.firstname} ${opera.artista.lastname}|"> artista</a>
 					 </p>
 			</td>

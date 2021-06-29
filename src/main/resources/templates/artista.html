@@ -47,13 +47,13 @@
 		<section id="dati-anagrafici" >
 			<em>Dati Anagrafici</em>
 			<ul>
-				<li>Nome: <span th:text="|${artista.firstname}|"></span> </li>
-				<li>Cognome: <span th:text="|${artista.lastname}|"></span></li>
-				<li>Data di nascita: <span th:text="|${artista.dateofbirth}|"></span></li>
-				<li>Data di morte: <span th:text="|${artista.dateofdeath}|"></span></li>
-				<li>Nazionalità: <span th:text="|${artista.nationality}|"></span></li>
-				<li>Luogo di nascita: <span th:text="|${artista.birthplace}|"></span></li>
-				<li>Luogo di morte: <span th:text="|${artista.placeofdeath}|"></span></li>
+				<li><strong>Nome:</strong> <span th:text="|${artista.firstname}|"></span> </li>
+				<li><strong>Cognome:</strong> <span th:text="|${artista.lastname}|"></span></li>
+				<li><strong>Data di nascita:</strong> <span th:text="|${artista.dateofbirth}|"></span></li>
+				<li><strong>Data di morte:</strong> <span th:text="|${artista.dateofdeath}|"></span></li>
+				<li><strong>Nazionalità:</strong> <span th:text="|${artista.nationality}|"></span></li>
+				<li><strong>Luogo di nascita: </strong><span th:text="|${artista.birthplace}|"></span></li>
+				<li><strong>Luogo di morte:</strong> <span th:text="|${artista.placeofdeath}|"></span></li>
 			</ul>
 		</section>
 		<section id="opere">
@@ -61,7 +61,7 @@
 			<div>
 			<table>
 			<tr th:each="opera:${artista.opere}">
-			<td>Titolo:</td>
+			<td><strong>Titolo:</strong></td>
 			<td><a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" 
 					 th:text="|${opera.title}|"> titolo</a>
 			</td>
