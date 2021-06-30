@@ -103,9 +103,10 @@ public class OperaConroller {
 	}
 	
 	@RequestMapping(value = "/admin/modificaOpera/{id}", method = RequestMethod.POST)
-	public String modificaOpera(@PathVariable("id") Long id,Model model,String title,Integer year,String description,@RequestParam("file")MultipartFile file) {
+	public String modificaOpera(@PathVariable("id") Long id,Model model,String title,Integer year,String artistaf,String artistal,String collezione,
+			String description,@RequestParam("file")MultipartFile file) {
 		Opera opera=this.operaService.operaPerId(id);
-		if(file!=null) {
+		if(file!=null&&!file.isEmpty()) {
 			String uploadDir = "src/main/resources/static/images";
 			try {
 				FileUploadUtil.deleteFile(uploadDir, opera.getPicture());
@@ -129,6 +130,14 @@ public class OperaConroller {
 		}
 		if(description!=null&&!description.equals("")) {
 			opera.setDescription(description);
+		}
+		if(artistaf!=null&&!artistaf.equals("")&&artistal!=null&&!artistal.equals("")) {
+			if(artistaService.artistaPerNomeCompleto(artistaf, artistal)!=null)
+			opera.setArtista(artistaService.artistaPerNomeCompleto(artistaf, artistal));
+		}
+		if(collezione!=null&&!collezione.equals("")) {
+			if(!collezioneService.collezionePerNome(collezione).isEmpty())
+			opera.setCollezione(collezioneService.collezionePerNome(collezione).get(0));
 		}
 		this.operaService.inserisci(opera);
 		model.addAttribute("artisti", this.artistaService.tutti());

@@ -33,6 +33,18 @@ public class ArtistaService {
 	}
 	
 	@Transactional
+	public Artista artistaPerNomeCompleto(String firstname,String lastname){
+		for(Artista a: artistaPerNome(firstname)) {
+			for(Artista b: artistaPerCognome(lastname)) {
+				if(a==b) {
+					return b;
+				}
+			}
+		}
+		return null;
+	}
+	
+	@Transactional
 	public void cancellaArtistaPerId(Long id){
 		this.artistaRepository.deleteById(id);
 	}

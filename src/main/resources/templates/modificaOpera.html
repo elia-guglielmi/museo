@@ -43,9 +43,14 @@
 			</tr>
 			<tr>
 				<td>Artista: <span th:text="|*{artista.firstname} *{artista.lastname}|"></span></td>
+				<td>modifica artista:
+				<p>nome<input type="text" name="artistaf" /></p>
+				<p>cognome<input type="text" name="artistal" /></p>
+				</td>
 			</tr>
 			<tr>
 				<td>Collezione:<span th:text="*{collezione.name}"></span></td>
+				<td>modifica collezione:<input type="text" name="collezione" /></td>
 			</tr>
 			<tr>
 			<td><img th:src="@{'/images/'+*{picture}}" align="right"/></td>
