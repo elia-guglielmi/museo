@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.view.RedirectView;
 
 import it.uniroma3.siw.spring.controller.validator.CredentialsValidator;
 import it.uniroma3.siw.spring.controller.validator.UserValidator;
@@ -50,14 +51,15 @@ public class AuthenticationController {
 	}
 	
     @RequestMapping(value = "/default", method = RequestMethod.GET)
-    public String defaultAfterLogin(Model model) {
+    public RedirectView defaultAfterLogin(Model model) {
         logger.debug("defaultAfterLogin parte");
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-//    	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-//            return "/admin/home.html";
-//        }
-        return "index.html";
+    	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+    		return new RedirectView("/admin");
+        }
+    	return new RedirectView("/");
+
     }
 	
     @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
