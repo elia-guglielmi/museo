@@ -10,9 +10,11 @@ import javax.persistence.ManyToOne;
 
 import org.springframework.data.annotation.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 
+@JsonIgnoreProperties({"artista","collezione"})
 @Entity
 public class Opera {
 	@Id
