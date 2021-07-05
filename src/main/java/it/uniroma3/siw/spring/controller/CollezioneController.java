@@ -93,4 +93,14 @@ public class CollezioneController {
 	 		model.addAttribute("curatori", this.curatoreService.tutti());
 			return "admin/home.html";
 		}
+		
+		 @RequestMapping(value = "/admin/rimuovicollezione/{id}", method = RequestMethod.GET)
+			public String rimuoviCollezione(@PathVariable("id") Long id, Model model) {
+				collezioneService.cancellaCollezionePerId(id);
+				model.addAttribute("artisti", this.artistaService.tutti());
+	    		model.addAttribute("collezioni", this.collezioneService.tutti());
+	    		model.addAttribute("opere", this.operaService.tutti());
+	     		model.addAttribute("curatori", this.curatoreService.tutti());
+				return "admin/home.html";
+			}
 }

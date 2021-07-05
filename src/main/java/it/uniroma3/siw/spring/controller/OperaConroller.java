@@ -147,5 +147,24 @@ public class OperaConroller {
 		return "admin/home.html";
 	}
 	
+
+	@RequestMapping(value = "/admin/rimuoviopera/{id}", method = RequestMethod.GET)
+	public String rimuoviOpera(@PathVariable("id") Long id, Model model) {
+		String fileName=operaService.operaPerId(id).getPicture();
+		String uploadDir = "src/main/resources/static/images";
+		try {
+			FileUploadUtil.deleteFile(uploadDir, fileName);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		operaService.cancellaOperaPerId(id);
+		model.addAttribute("artisti", this.artistaService.tutti());
+		model.addAttribute("collezioni", this.collezioneService.tutti());
+		model.addAttribute("opere", this.operaService.tutti());
+ 		model.addAttribute("curatori", this.curatoreService.tutti());
+		return "admin/home.html";
+	}
+	
 	
 }

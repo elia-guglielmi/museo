@@ -106,4 +106,14 @@ public class ArtistaController {
 			return "admin/home.html";
 		}
 		
+		 @RequestMapping(value = "/admin/rimuoviartista/{id}", method = RequestMethod.GET)
+			public String rimuoviArtista(@PathVariable("id") Long id, Model model) {
+				artistaService.cancellaArtistaPerId(id);
+				model.addAttribute("artisti", this.artistaService.tutti());
+	    		model.addAttribute("collezioni", this.collezioneService.tutti());
+	    		model.addAttribute("opere", this.operaService.tutti());
+	     		model.addAttribute("curatori", this.curatoreService.tutti());
+				return "admin/home.html";
+			}
+		
 }
