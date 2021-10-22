@@ -18,7 +18,7 @@
 					<li><a href="galleria">Galleria</a></li>
 					<li sec:authorize="!isAuthenticated()"><a href="login">Accedi</a></li>
 					<li sec:authorize="isAuthenticated()"><a href="logout">logout</a></li>
-					<li sec:authorize="isAuthenticated()"><a href="admin">Menu admin</a></li>
+					<li sec:authorize="hasAuthority('ADMIN')"><a href="admin">Menu admin</a></li>
 				</ul> <!-- Fine del sotto-menu -->
 			</li> <!-- Chiudo il list-item -->
 			<!--qui altri list-item -->

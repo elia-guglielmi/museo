@@ -30,27 +30,27 @@
 		<table class="update">
 			<tr>
 				<td>Titolo: <span th:text="*{title}"></span></td>
-				<td>modifica titolo:<input type="text" name="title" /></td>
+				<td>modifica titolo:<input type="text" th:text="*{title}" name="title" /></td>
 			</tr>		
 			<tr>
 				<td>Anno: <span th:text="*{year}"></span></td>
-				<td>modifica anno:<input type="number" name="year" /></td>
+				<td>modifica anno:<input type="number" th:text="*{year}" name="year" /></td>
 
 			</tr>
 			<tr>
 				<td>Descrizione: <span th:text="*{description}"></span></td>
-				<td>modifica descrizione:<input type="text" name="description" /></td>
+				<td>modifica descrizione:<input type="text" th:text="*{description}" name="description" /></td>
 			</tr>
 			<tr>
 				<td>Artista: <span th:text="|*{artista.firstname} *{artista.lastname}|"></span></td>
 				<td>modifica artista:
-				<p>nome<input type="text" name="artistaf" /></p>
-				<p>cognome<input type="text" name="artistal" /></p>
+				<p>nome<input type="text"  th:value="*{artista.firstname}" name="artistaf" /></p>
+				<p>cognome<input type="text"  th:text="*{artista.lastname}" name="artistal" /></p>
 				</td>
 			</tr>
 			<tr>
 				<td>Collezione:<span th:text="*{collezione.name}"></span></td>
-				<td>modifica collezione:<input type="text" name="collezione" /></td>
+				<td>modifica collezione:<input type="text"  th:text="*{collezione.name}" name="collezione" /></td>
 			</tr>
 			<tr>
 			<td><img th:src="@{'/images/'+*{picture}}" align="right"/></td>

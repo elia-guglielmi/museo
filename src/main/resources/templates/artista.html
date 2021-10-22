@@ -57,7 +57,7 @@
 			</ul>
 		</section>
 		<section id="opere">
-			<em>Opere</em>
+			<em>Opere</em>   <span th:text="${#lists.size(artista.opere)}"></span>
 			<div>
 			<table>
 			<tr th:each="opera:${artista.opere}">
